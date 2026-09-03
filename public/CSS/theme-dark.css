@@ -1,0 +1,260 @@
+/* ==========================================================================
+   17. TEMA ESCURO
+   Reaproveita a paleta cinematográfica já usada no Hero e em Serviços
+   (--ink-950 / --ink-900 / --ink-850 / --ink-800) para o restante do site,
+   mantendo laranja e azul como cores de destaque em ambos os temas.
+   ========================================================================== */
+html[data-theme="dark"] {
+    color-scheme: dark;
+}
+
+html[data-theme="dark"] :root,
+html[data-theme="dark"] {
+    --white:#141C2B;
+    --off-white:#0E1420;
+    --ink:#F5F7FA;
+    --ink-soft:#A9B4C4;
+    --line: rgba(245,247,250,0.12);
+    --shadow-sm: 0 10px 30px rgba(0,0,0,0.35);
+    --shadow-md: 0 20px 50px rgba(0,0,0,0.45);
+    --shadow-lg: 0 30px 80px rgba(0,0,0,0.55);
+}
+
+html[data-theme="dark"] body {
+    background: linear-gradient(180deg, var(--ink-950) 0%, var(--ink-900) 100%);
+}
+
+/* Header (o header transparente sobre o Hero já é escuro por padrão;
+   só o estado "scrolled", com vidro claro, precisa de versão escura) */
+html[data-theme="dark"] header.scrolled {
+    background:rgba(14,20,32,0.82);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+}
+
+/* Sobre */
+html[data-theme="dark"] .about {
+    background:
+        radial-gradient(circle, rgba(245,247,250,0.045) 1px, transparent 1.4px) 0 0/28px 28px,
+        linear-gradient(160deg, var(--ink-900) 0%, var(--ink-950) 45%, var(--ink-900) 100%);
+}
+
+html[data-theme="dark"] .about-bg .glow-orange {
+    background: radial-gradient(circle, rgba(245,124,50,.22), transparent 70%);
+}
+
+html[data-theme="dark"] .about-bg .glow-blue {
+    background: radial-gradient(circle, rgba(92,134,163,.24), transparent 70%);
+}
+
+html[data-theme="dark"] .about-bg .glow-orange-2 {
+    background: radial-gradient(circle, rgba(245,124,50,.16), transparent 70%);
+}
+
+html[data-theme="dark"] .about-card {
+    background: linear-gradient(160deg, var(--ink-850) 0%, var(--ink-900) 100%);
+    border-color: var(--line);
+}
+html[data-theme="dark"] .about-card:hover {
+    box-shadow:0 16px 34px rgba(245,124,50,.22);
+}
+
+html[data-theme="dark"] .about-card .num {
+    background:var(--ink-800);
+    box-shadow: none;
+}
+
+/* Projetos */
+html[data-theme="dark"] .projects {
+    background:linear-gradient(160deg, var(--ink-900) 0%, var(--ink-950) 50%, var(--ink-900) 100%);
+}
+
+html[data-theme="dark"] .filter-btn {
+    color:var(--ink-soft);
+}
+
+html[data-theme="dark"] .filter-btn:hover {
+    color:var(--orange-soft);
+}
+
+/* Efeito "ambilight" (fita de LED atrás da TV) nas fotos do mosaico —
+   exclusivo do tema escuro, onde o glow se destaca de verdade contra o fundo. */
+html[data-theme="dark"] .proj-item[data-category="audiovisual"] {
+    box-shadow:
+        0 0 0 1px rgba(245,124,50,0.15),
+        0 0 26px 4px rgba(245,124,50,0.45),
+        0 0 60px 14px rgba(245,124,50,0.32),
+        0 0 110px 26px rgba(245,124,50,0.16),
+        0 20px 50px rgba(245,124,50,0.22);
+    animation:ledGlowOrange 4.5s ease-in-out infinite;
+}
+
+html[data-theme="dark"] .proj-item[data-category="web"] {
+    box-shadow:
+        0 0 0 1px rgba(92,134,163,0.18),
+        0 0 26px 4px rgba(92,134,163,0.5),
+        0 0 60px 14px rgba(92,134,163,0.34),
+        0 0 110px 26px rgba(92,134,163,0.18),
+        0 20px 50px rgba(92,134,163,0.26);
+    animation:ledGlowBlue 4.5s ease-in-out infinite;
+}
+
+html[data-theme="dark"] .proj-item[data-category="audiovisual"]:hover {
+    box-shadow:
+        0 0 0 1px rgba(245,124,50,0.25),
+        0 0 34px 6px rgba(245,124,50,0.6),
+        0 0 76px 18px rgba(245,124,50,0.4),
+        0 0 130px 32px rgba(245,124,50,0.2),
+        0 20px 50px rgba(245,124,50,0.28);
+}
+
+html[data-theme="dark"] .proj-item[data-category="web"]:hover {
+    box-shadow:
+        0 0 0 1px rgba(92,134,163,0.28),
+        0 0 34px 6px rgba(92,134,163,0.65),
+        0 0 76px 18px rgba(92,134,163,0.42),
+        0 0 130px 32px rgba(92,134,163,0.22),
+        0 20px 50px rgba(92,134,163,0.3);
+}
+
+@keyframes ledGlowOrange {
+    0%,100% {
+        box-shadow:
+            0 0 0 1px rgba(245,124,50,0.15),
+            0 0 26px 4px rgba(245,124,50,0.45),
+            0 0 60px 14px rgba(245,124,50,0.32),
+            0 0 110px 26px rgba(245,124,50,0.16),
+            0 20px 50px rgba(245,124,50,0.22);
+    }
+    50% {
+        box-shadow:
+            0 0 0 1px rgba(245,124,50,0.22),
+            0 0 32px 6px rgba(245,124,50,0.58),
+            0 0 74px 18px rgba(245,124,50,0.4),
+            0 0 130px 30px rgba(245,124,50,0.2),
+            0 20px 50px rgba(245,124,50,0.24);
+    }
+}
+@keyframes ledGlowBlue {
+    0%,100% {
+        box-shadow:
+            0 0 0 1px rgba(92,134,163,0.18),
+            0 0 26px 4px rgba(92,134,163,0.5),
+            0 0 60px 14px rgba(92,134,163,0.34),
+            0 0 110px 26px rgba(92,134,163,0.18),
+            0 20px 50px rgba(92,134,163,0.26);
+    }
+    50% {
+        box-shadow:
+            0 0 0 1px rgba(92,134,163,0.25),
+            0 0 32px 6px rgba(92,134,163,0.62),
+            0 0 74px 18px rgba(92,134,163,0.42),
+            0 0 130px 30px rgba(92,134,163,0.22),
+            0 20px 50px rgba(92,134,163,0.28);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html[data-theme="dark"] .proj-item[data-category="audiovisual"],
+    
+    html[data-theme="dark"] .proj-item[data-category="web"]{ animation:none; }
+}
+
+/* Diferenciais — tema escuro */
+html[data-theme="dark"] .diff {background:var(--off-white);}
+
+html[data-theme="dark"] .diff-bg {
+    background:
+        radial-gradient(circle, rgba(245,247,250,0.045) 1px, transparent 1.4px) 0 0/26px 26px,
+        linear-gradient(120deg, rgba(245,124,50,.16), rgba(92,134,163,.22), rgba(245,124,50,.16));
+    background-size: 26px 26px, 220% 220%;
+}
+html[data-theme="dark"] .diff-card {
+    background:
+        radial-gradient(circle 200px at var(--mx,50%) var(--my,50%),
+            color-mix(in srgb, var(--accent, var(--orange)) 14%, transparent), transparent 70%),
+        linear-gradient(160deg, var(--ink-850) 0%, var(--ink-900) 100%);
+    border-color: var(--line);
+}
+
+html[data-theme="dark"] .diff-card:hover{
+    box-shadow: 0 24px 55px rgba(0,0,0,.42), 0 0 0 1px var(--accent, var(--orange)) inset;
+}
+
+/* CTA */
+html[data-theme="dark"] .cta {
+    background: linear-gradient(120deg, var(--ink-900) 0%, var(--ink-850) 55%, var(--blue-deep) 145%);
+}
+
+html[data-theme="dark"] .cta h2 {color:#fff;}
+
+/* Contato */
+html[data-theme="dark"] .contact { 
+    background: linear-gradient(160deg, var(--ink-900) 0%, var(--ink-950) 40%, var(--ink-900) 100%);
+}
+
+html[data-theme="dark"] .form-card {
+    background:linear-gradient(160deg, var(--ink-850) 0%, var(--ink-900) 100%);
+}
+
+html[data-theme="dark"] .field input,
+
+html[data-theme="dark"] .field select,
+
+html[data-theme="dark"] .field textarea {
+    background: var(--ink-900);
+    color:var(--ink);
+}
+
+html[data-theme="dark"] .field input::placeholder,
+
+html[data-theme="dark"] .field textarea::placeholder {color:rgba(245,247,250,0.35);}
+
+html[data-theme="dark"] .field select {color-scheme:dark;}
+
+html[data-theme="dark"] .consent-field span {
+    color: var(--ink-soft);
+}
+
+/* Rodapé — aprofunda o azul para casar com o restante da página escura */
+html[data-theme="dark"] footer{
+    background:
+        radial-gradient(circle at 100% 10%, rgba(92,134,163,0.35) 0%, rgba(92,134,163,0.08) 18%, transparent 42%),
+        linear-gradient(120deg, #223447 0%, #1B2A38 45%, #131E29 100%);
+}
+
+/* Menu mobile */
+html[data-theme="dark"] .mobile-panel {background:var(--ink-900);}
+
+/* Grain um pouco mais discreto sobre fundo escuro */
+html[data-theme="dark"] .grain-overlay {opacity:0.04;}
+
+
+/* Cards de introdução (portfolio-covers) — tema escuro */
+html[data-theme="dark"] body .grad-intro {
+    background:
+        radial-gradient(circle at 8% 40%, rgba(245,124,50,.13), transparent 28%),
+        radial-gradient(circle at 92% 60%, rgba(92,134,163,.18), transparent 32%),
+        var(--off-white);
+}
+
+html[data-theme="dark"] body .grad-intro-card {
+    border-color: rgba(169,201,220,.15);
+    background: linear-gradient(140deg, rgba(28,42,64,.88), rgba(14,20,32,.92));
+    box-shadow: 0 24px 60px rgba(0,0,0,.35), inset 0 1px rgba(255,255,255,.05);
+}
+
+html[data-theme="dark"] body .grad-intro-card:hover {
+    border-color: rgba(245,124,50,.52);
+    box-shadow: 0 30px 75px rgba(0,0,0,.48), 0 0 28px rgba(245,124,50,.10);
+}
+
+@media (prefers-reduced-motion:reduce) {
+    html[data-theme="dark"] body .grad-intro-card {
+        transform: none !important;
+        transition: none;
+    }
+}
+
+html[data-theme="dark"] .about-video-frame {
+    box-shadow:0 26px 60px rgba(0,0,0,.42),0 0 0 1px rgba(255,255,255,.1) inset;
+}

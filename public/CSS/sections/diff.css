@@ -1,0 +1,169 @@
+/* ==========================================================================
+   10. DIFERENCIAIS (DIFF)
+   ========================================================================== */
+.diff {
+    padding: 120px 0;
+    background: var(--off-white);
+    overflow: hidden;
+    transition: background-color .5s var(--ease);
+}
+
+.diff-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background:
+        radial-gradient(circle, rgba(32,41,58,0.05) 1px, transparent 1.4px) 0 0/26px 26px,
+        linear-gradient(120deg, rgba(245,124,50,.10), rgba(169,201,220,.16), rgba(245,124,50,.10));
+    background-size: 26px 26px, 220% 220%;
+    animation: gradientDrift 16s ease-in-out infinite;
+}
+@keyframes gradientDrift {
+    0%,100% { background-position: 0 0, 0% 50%; }
+    50%     { background-position: 0 0, 100% 50%; }
+}
+
+.diff .wrap {
+    position: relative;
+    z-index: 1;
+}
+
+.diff-grid {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 20px;
+}
+
+.diff-card {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    background:
+        radial-gradient(circle 200px at var(--mx,50%) var(--my,50%),
+            color-mix(in srgb, var(--accent, var(--orange)) 10%, transparent), transparent 70%),
+        var(--white);
+    padding: 44px 30px;
+    text-align: center;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow-sm);
+    transition: transform .45s var(--ease), box-shadow .45s var(--ease), border-color .4s var(--ease);
+}
+
+/* Número animado (injetado via JS) — mesmo lugar do antigo ::after */
+.diff-num {
+    position: absolute;
+    top: -14px;
+    right: 8px;
+    font-family: 'Poppins',sans-serif;
+    font-size: 66px;
+    font-weight: 800;
+    color: var(--accent, var(--orange));
+    opacity: .07;
+    z-index: 0;
+    line-height: 1;
+    pointer-events: none;
+    transition: opacity .4s var(--ease), transform .5s var(--ease);
+}
+
+.diff-card:hover .diff-num {
+    opacity: .14;
+    transform: translateY(4px) scale(1.06);
+}
+
+/* Linha de destaque no topo */
+.diff-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent, var(--orange)), transparent);
+    transition: width .5s ease;
+    z-index: 2;
+}
+
+.diff-card:hover::before {
+    width: 100%;
+}
+
+.diff-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 24px 50px rgba(32,41,58,.14), 0 0 0 1px var(--accent, var(--orange)) inset;
+    border-color: var(--accent, var(--orange));
+}
+
+.diff-card:nth-child(1){--accent:var(--orange);}
+.diff-card:nth-child(2){--accent:var(--blue-deep);}
+.diff-card:nth-child(3){--accent:var(--orange);}
+.diff-card:nth-child(4){--accent:var(--blue-deep);}
+
+.diff-icon {
+    position: relative;
+    z-index: 1;
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: color-mix(in srgb, var(--accent, var(--orange)) 12%, transparent);
+    border: 1.5px solid color-mix(in srgb, var(--accent, var(--orange)) 30%, transparent);
+    transition: transform .5s var(--ease), background .4s var(--ease), box-shadow .4s var(--ease);
+    animation: iconBreathe 4s ease-in-out infinite;
+}
+
+.diff-card:hover .diff-icon {
+    animation-play-state: paused;
+    transform: rotate(12deg) scale(1.12);
+    box-shadow: 0 0 0 9px color-mix(in srgb, var(--accent, var(--orange)) 10%, transparent);
+}
+
+@keyframes iconBreathe {
+    0%,100% { transform:scale(1); }
+    50%     { transform:scale(1.06); }
+}
+
+.diff-icon svg {
+    width: 26px;
+    height: 26px;
+    stroke: var(--accent, var(--orange));transition:stroke .3s;
+}
+
+.diff-card h4 {
+    position: relative;
+    z-index: 1;
+    font-size: 17px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    margin-top: 10px;
+}
+
+.diff-card p {
+    position: relative;
+    z-index: 1;
+    font-size: 13.5px;
+    color:var(--ink-soft);
+    line-height: 1.6;
+}
+
+/* Entrada em cascata com leve "bounce" */
+.diff-card.reveal {
+    opacity: 0;
+    transform: translateY(30px) scale(.92) rotate(-2deg);
+    transition: opacity .7s var(--ease), transform .7s cubic-bezier(.34,1.56,.64,1);
+}
+
+.diff-card.reveal.in {
+    transform: translateY(0) scale(1) rotate(0deg);
+    opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .diff-icon {
+        animation: none;
+    }
+}

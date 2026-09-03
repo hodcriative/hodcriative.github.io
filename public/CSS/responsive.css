@@ -1,0 +1,285 @@
+/* ==========================================================================
+   16. RESPONSIVO
+   ========================================================================== */
+@media (max-width:1024px) {
+    .about,.services,.projects,.contact {
+        padding: 96px 0;
+    }
+
+    .diff {
+        padding: 90px 0;
+    }
+
+    .about .grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .about-visual {
+        min-height: 440px;
+        margin-top: 20px;
+    }
+    
+    .services-grid {
+        grid-template-columns: repeat(2,1fr);
+    }
+    
+    .diff-grid {
+        grid-template-columns: repeat(2,1fr);
+    }
+    
+    .contact .grid {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+    
+    .footer-top {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width:820px) {
+    header {
+        padding: 16px 0;
+    }
+    
+    .logo img{ 
+        max-height:40px;
+    }
+    
+    .hero {
+        min-height: auto;
+        padding: 112px 0 72px;
+    }
+    
+    .hero .wrap {
+        grid-template-columns: 1fr;
+        gap: 34px;
+    }
+    
+    .hero-visual{
+        order: -1;
+        max-width: 420px;
+        margin: 0 auto;
+    }
+    
+    .hero-imgbox {
+        aspect-ratio: 4/3;
+    }
+    
+    .hero-badge {
+        bottom: -14px;
+        left: -10px;
+    }
+    
+    .section-head {
+        margin-bottom: 8px;
+    }
+    
+    nav.menu ul, nav.menu .btn-primary {
+        display: none;
+    }
+    
+    .theme-toggle:not(.theme-toggle-mobile) {
+        display: none;
+    }
+    
+    .burger {
+        display: flex;
+    }
+    
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width:560px) {
+    .wrap {
+        padding: 0 20px;
+    }
+    
+    .btn {
+        width: 100%;
+        padding: 14px 20px;
+    }
+    
+    .mobile-panel .btn {
+        width: auto;
+    }
+    
+    .hero {
+        padding: 102px 0 58px;
+    }
+    
+    .hero .wrap {
+        gap: 28px;
+    }
+    
+    .hero-visual {
+        max-width: 100%;
+    }
+    
+    .hero-copy h1 {
+        font-size: clamp(34px, 10vw, 44px);
+        margin-bottom: 18px;
+    }
+    
+    .hero-copy p.lead {
+        font-size: 16px;
+        line-height: 1.6;
+        margin-bottom: 28px;
+    }
+    
+    .hero-actions {
+        gap: 12px;
+        margin-bottom: 34px;
+    }
+    
+    .indicators li {
+        font-size: 12px;
+    }
+    
+    .indicators li:not(:last-child)::after {
+        margin: 0 10px;
+    }
+    
+    .scroll-cue {
+        display: none;
+    }
+    
+    .hero-badge {
+        left: 10px;
+        bottom: -12px;
+        padding: 12px 14px;
+    }
+    
+    .hero-badge .ring {
+        width: 36px;
+        height: 36px;
+    }
+    
+    .about, .services, .projects, .contact {
+        padding: 72px 0;
+    }
+    
+    .diff, .cta {
+        padding: 72px 0;
+    }
+    
+    .section-head {
+        margin-bottom: 32px;
+    }
+    
+    .section-head h2, .cta h2 {
+        font-size: clamp(28px, 8vw, 36px);
+        line-height: 1.16;
+    }
+    
+    .section-head p.sub, .cta p {
+        font-size: 15px;
+        line-height: 1.6;
+    }
+    
+    .about-cards {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+    
+    .about-card, .service-card {
+        padding: 26px 22px;
+    }
+    
+    .about-visual {
+        min-height: 330px;
+    }
+    
+    .services-grid {
+        gap: 16px;
+    }
+    
+    .proj-item {
+        margin-bottom: 28px;
+    }
+    
+    .proj-item .overlay {
+        padding: 18px;
+    }
+    
+    .diff-grid {
+        padding: 10px;
+        gap: 10px;
+    }
+    
+    .diff-card {
+        padding: 30px 24px;
+    }
+    
+    .form-card {
+        border-radius: 18px;
+        padding: 26px 20px;
+    }
+    
+    .contact-info-item {
+        gap: 14px;
+        padding: 18px 0;
+    }
+    
+    .contact-info-item p {
+        font-size: 15px;
+        overflow-wrap: anywhere;
+    }
+    
+    .field input, .field select, .field textarea {
+        font-size: 16px;
+    }
+    
+    .diff-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .footer-top {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding-bottom: 36px;
+    }
+    
+    footer {
+        padding: 56px 0 24px;
+    }
+    
+    .footer-brand .logo img {
+        width: 118px;
+    }
+    
+    .footer-brand p {
+        max-width: 300px;
+    }
+    
+    .footer-bottom {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 8px;
+        padding-top: 20px;
+    }
+    
+    .filter-tabs {
+        gap: 8px;
+    }
+    
+    .filter-btn {
+        padding: 9px 18px;
+        font-size: 13px;
+    }
+    
+    .faq-question {
+        padding: 18px 18px;
+        font-size: 14.5px;
+    }
+    
+    .faq-item.open .faq-answer p {
+        padding: 0 18px 18px;
+    }
+}

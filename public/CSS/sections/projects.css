@@ -1,0 +1,348 @@
+/* ==========================================================================
+   9. PROJETOS (PROJECTS)
+   ========================================================================== */
+.projects {
+    padding: 130px 0;
+    background: linear-gradient(160deg, #FFF6EE 0%, var(--off-white) 50%, #EAF4F9 100%);
+    position: relative;
+    overflow: hidden;
+    transition:background-color .5s var(--ease);
+}
+
+/* Camada de fundo com glows de marca + spotlight que segue o mouse */
+.projects-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.projects-bg .glow-a {
+    position: absolute;
+    width: 420px;
+    height: 420px;
+    top: -140px;
+    left: -100px;
+    border-radius: 50%;
+    filter: blur(70px);
+    background: radial-gradient(circle, rgba(245,124,50,.14), transparent 70%);
+    animation: glowDrift 18s ease-in-out infinite alternate;
+    will-change: transform;
+}
+
+.projects-bg .glow-b {
+    position: absolute;
+    width: 380px;
+    height: 380px;
+    bottom: -120px;
+    right: -80px;
+    border-radius: 50%;
+    filter: blur(70px);
+    background: radial-gradient(circle, rgba(92,134,163,.16), transparent 70%);
+    animation: glowDrift 22s ease-in-out infinite alternate;
+    animation-delay: 3s;
+    will-change: transform;
+}
+
+/* Spotlight que acompanha o cursor — reaproveitado também no CTA e no Contato */
+.projects-spotlight, .contact-spotlight {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    opacity: 0;
+    transition: opacity .4s var(--ease);
+    background: radial-gradient(circle 300px at var(--spotX,50%) var(--spotY,50%), rgba(245,124,50,0.08), transparent 70%);
+    pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .projects-bg .glow-a, .projects-bg .glow-b {
+        animation:none;
+    }
+}
+
+.projects .wrap {
+    position: relative;
+    z-index: 1;
+}
+
+/* Filtro de categorias */
+.filter-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 40px;
+}
+
+.filter-btn {
+    padding: 11px 24px;
+    border-radius: 100px;
+    border: 1.5px solid var(--line);background:var(--white);
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ink-soft);
+    cursor: pointer;
+    transition: border-color .35s var(--ease), color .35s var(--ease), transform .35s var(--ease), background .35s var(--ease);
+}
+
+.filter-btn:hover {
+    border-color: var(--orange);
+    color: var(--orange);
+    transform: translateY(-2px);
+}
+
+.filter-btn.active {
+    background: var(--ink-800);
+    border-color: var(--ink-800);
+    color: #fff;
+}
+
+.filter-btn.active [data-filter="audiovisual"] {
+    background: var(--orange);
+    border-color: var(--orange);
+}
+
+.filter-btn.active [data-filter="web"] {
+    background: var(--blue-deep);
+    border-color: var(--blue-deep);
+}
+
+.masonry {
+    position:relative;
+}
+
+.proj-item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    cursor: pointer;
+    visibility: hidden;
+    --projParallax:0px;
+    transition:opacity .35s var(--ease), transform .35s var(--ease), box-shadow .4s var(--ease), left .4s var(--ease), top .4s var(--ease);
+    transform:translateY(var(--projParallax));will-change:transform;
+}
+
+.proj-item.filtered-out {
+    display: none;
+}
+
+/* Distinção visual por categoria — no modo claro mantém uma sombra discreta;
+   o efeito "ambilight" (fita de LED) só aparece no tema escuro (ver seção 17). */
+.proj-item [data-category="audiovisual"] {
+    box-shadow: 0 20px 50px rgba(245,124,50,0.22);
+}
+
+.proj-item [data-category="web"] {
+    box-shadow: 0 20px 50px rgba(92,134,163,0.26);
+}
+
+.proj-item .cat-badge {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    z-index: 2;
+    font-size: 10.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    padding: 6px 13px;
+    border-radius: 100px;
+    color: #fff;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+.proj-item[data-category="audiovisual"] .cat-badge {
+    background:rgba(245,124,50,0.92);
+}
+
+.proj-item[data-category="web"] .cat-badge {
+    background: rgba(92,134,163,0.92);
+}
+
+.proj-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform .7s var(--ease);
+}
+
+.proj-item.video-card {
+    aspect-ratio: 4/3;
+    background: var(--ink);
+}
+
+.proj-item iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    pointer-events: none;
+}
+
+.proj-item.video-card iframe {
+    transform: scale(1.26);
+    transform-origin: center;
+    transition: transform .7s var(--ease);
+}
+
+.proj-item .overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(0deg, rgba(20,26,36,0.82) 0%, rgba(20,26,36,0.12) 55%, transparent 75%);
+    opacity: 0;
+    transition: opacity .4s var(--ease);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding:22px;
+}
+
+.proj-item:hover .overlay {
+    opacity: 1;
+}
+
+.proj-item:hover img {
+    transform: scale(1.08);
+}
+
+.proj-item:hover.video-card iframe {
+    transform: scale(1.34);
+}
+
+.video-wrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+/* A proporção agora vem de --ratio, definida inline em cada vídeo.
+   66.66% se nada for informado (fallback). */
+.video-wrapper::before {
+    content: "";
+    display: block;
+    padding-top: var(--ratio, 66.66%);
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    transition: transform .7s var(--ease);
+    pointer-events: none;
+}
+
+/* O scale(1.25) era só pra "esconder" a barra do player em modo background.
+   Vira uma classe opcional, só pra quem precisar disso. */
+.video-wrapper.crop iframe {
+    transform: scale(1.25);
+}
+
+.overlay .tag {
+    font-size: 11.5px;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: var(--blue);
+    font-weight: 600;
+    margin-bottom: 6px;}
+
+.overlay h5 {
+    color: #fff;
+    font-size: 17px;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.overlay .view-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #fff;
+    color: var(--ink-950);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 9px 18px;
+    border-radius: 100px;
+    width: fit-content;
+    transform: translateY(10px);
+    opacity: 0;
+    transition: transform .4s var(--ease) .05s, opacity .4s var(--ease) .05s;
+}
+
+.proj-item:hover .view-btn {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.play-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%) scale(0.85);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.92);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: transform .4s var(--ease), opacity .4s var(--ease);
+}
+
+.proj-item:hover .play-btn {
+    opacity: 1;
+    transform: translate(-50%,-50%) scale(1);
+    animation: pulseRing 1.4s var(--ease) infinite;
+}
+
+@keyframes pulseRing {
+    0% { box-shadow:0 0 0 0 rgba(255,255,255,.55); }
+    100% { box-shadow:0 0 0 14px rgba(255,255,255,0); }
+}
+
+.play-btn svg {
+    width: 20px;
+    height: 20px;
+    margin-left: 3px;
+    fill: var(--orange);
+}
+
+@media (hover) {
+    .proj-item .overlay {
+        opacity: 0;
+    }
+    
+    .proj-item:hover .overlay {
+        opacity: 1;
+    }
+    
+    .proj-item .view-btn, .proj-item .play-btn {
+        opacity: 0;
+    }
+    
+    .proj-item:hover .view-btn {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+    .proj-item:hover .play-btn {
+        opacity: 1;
+        transform: translate(-50%,-50%) scale(1);
+    }
+}
+
+@media (hover:none) {
+    .hero-fx, .cta-spotlight, .projects-spotlight, .contact-spotlight {
+        display: none;
+    }
+}

@@ -1,0 +1,164 @@
+/* ==========================================================================
+   8. SERVIÇOS (SERVICES)
+   ========================================================================== */
+.services {
+    padding: 130px 0;
+    background:
+        radial-gradient(ellipse 70% 60% at 8% 8%, rgba(245,124,50,0.14), transparent 60%),
+        radial-gradient(ellipse 70% 65% at 95% 92%, rgba(92,134,163,0.28), transparent 60%),
+        linear-gradient(175deg, var(--ink-900) 0%, var(--ink-850) 100%);
+    color: var(--on-dark);overflow:hidden;
+}
+
+.services-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.services-bg .bokeh {
+    filter: blur(26px);
+}
+
+.bokeh-s1 {
+    width: 140px;
+    height: 140px;
+    top: 8%;
+    left: 10%;
+    background: radial-gradient(circle, rgba(245,124,50,.4), transparent 70%);
+    animation-delay:.5s;
+}
+
+.bokeh-s2 {
+    width: 100px;
+    height: 100px;
+    top: 70%;
+    left: 88%;
+    background: radial-gradient(circle, rgba(169,201,220,.4), transparent 70%);
+    animation-delay: 2.1s;
+}
+
+.bokeh-s3 {
+    width: 70px;
+    height: 70px;
+    top: 20%;
+    left:82%;
+    background: radial-gradient(circle, rgba(251,174,121,.4), transparent 70%);
+    animation-delay:3.6s;
+}
+
+/* Grade fina lembrando um storyboard / film-strip, referência direta ao trabalho audiovisual */
+.services-grid-lines{
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(255,255,255,0.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.045) 1px, transparent 1px);
+    background-size: 64px 64px;
+    -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 45%, #000 40%, transparent 85%);
+    mask-image: radial-gradient(ellipse 80% 70% at 50% 45%, #000 40%, transparent 85%);
+}
+
+.services .section-head h2 {
+    color:#fff;
+}
+
+.services .section-head .eyebrow {
+    color: var(--blue-soft);
+}
+
+.services .wrap {
+    position: relative;
+    z-index: 1;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 24px;
+}
+
+.service-card {
+    background: rgba(245,247,250,0.045);
+    border-radius: var(--radius-sm);
+    padding: 36px 30px;
+    border: 1.5px solid rgba(245,247,250,0.1);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    box-shadow: 0 10px 30px rgba(0,0,0,.18);
+    transition: transform .4s var(--ease), border-color .4s var(--ease), background .4s var(--ease), box-shadow .4s var(--ease);
+}
+
+.service-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--orange);
+    background: rgba(245,247,250,0.07);
+    box-shadow: 0 24px 48px rgba(0,0,0,.28), 0 8px 24px rgba(245,124,50,.18);
+}
+
+.service-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    background: rgba(169,201,220,0.1);
+    border: 1px solid rgba(169,201,220,.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 22px;
+    transition: transform .4s var(--ease), background .4s var(--ease), border-color .4s var(--ease);
+}
+
+.service-icon svg {
+    width: 26px;
+    height: 26px;
+    stroke: var(--blue-soft);
+    transition: stroke .4s var(--ease), transform .4s var(--ease);
+}
+
+.service-card:hover .service-icon {
+    background: rgba(245,124,50,.16);
+    border-color: rgba(245,124,50,.4);
+    transform: rotate(-8deg) scale(1.08);
+}
+
+.service-card:hover .service-icon svg {
+    stroke: var(--orange-soft);
+    transform:scale(1.08);
+}
+
+/* Ícones "desenhados" com stroke-dashoffset: o traçado se completa quando o card entra na tela */
+.service-icon svg path, .service-icon svg circle, .service-icon svg rect {
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
+    transition: stroke-dashoffset 1s var(--ease) .2s;
+}
+
+.service-card.reveal.in .service-icon svg path,
+.service-card.reveal.in .service-icon svg circle,
+.service-card.reveal.in .service-icon svg rect {
+    stroke-dashoffset: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .service-icon svg path, .service-icon svg circle, .service-icon svg rect {
+        stroke-dasharray: none;
+        stroke-dashoffset: 0;
+        transition: none;
+    }
+}
+
+.service-card h4 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.service-card p {
+    font-size: 14.5px;
+    color: var(--on-dark-soft);
+    line-height: 1.65;
+}

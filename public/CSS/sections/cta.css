@@ -1,0 +1,59 @@
+/* ==========================================================================
+   11. CTA
+   ========================================================================== */
+.cta {
+    padding: 120px 0;
+    background: linear-gradient(120deg, #ffffff 0%, #DCEAF2 55%, var(--blue-deep) 135%);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: background-color .5s var(--ease);
+}
+
+.cta::before {
+    content: "";
+    position: absolute;
+    width: 520px;
+    height: 520px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(245,124,50,0.18), transparent 70%);
+    top: -220px;
+    right: -160px;
+    animation: driftBlobSlow 10s ease-in-out infinite alternate;
+}
+
+@keyframes driftBlobSlow {
+    0% { transform:translate(0,0) scale(1); }
+    100% { transform:translate(-30px, 20px) scale(1.08); }
+}
+
+/* Spotlight que acompanha o cursor, reforçando a sensação interativa da seção */
+.cta-spotlight {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    opacity: 0;
+    transition: opacity .4s var(--ease);
+    background: radial-gradient(circle 260px at var(--spotX,50%) var(--spotY,50%), rgba(245,124,50,0.16), transparent 70%);
+    pointer-events: none;
+}
+
+.cta .wrap {
+    position: relative;
+    z-index:1;
+}
+
+.cta h2 {
+    font-size: clamp(28px,4vw,44px);
+    font-weight: 700;
+    max-width: 720px;
+    margin: 0 auto 18px;
+    line-height: 1.2;
+}
+
+.cta p {
+    font-size: 16.5px;
+    color: var(--ink-soft);
+    max-width: 520px;
+    margin: 0 auto 36px;
+}

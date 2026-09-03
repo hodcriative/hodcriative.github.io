@@ -1,0 +1,156 @@
+/* ==========================================================================
+   BANNER DE COOKIES (componente global)
+   Usado em todas as páginas do site — a lógica de exibição/gravação da
+   escolha do usuário fica em JS/cookie-banner.js.
+   ========================================================================== */
+.cookie-banner {
+    position: fixed;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    z-index: 2000;
+    max-width: 920px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 18px 22px;
+    border-radius: var(--radius-sm);
+    background: rgba(20,28,43,0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: var(--shadow-lg);
+    transform: translateY(140%);
+    opacity: 0;
+    transition: transform .5s var(--ease), opacity .5s var(--ease);
+}
+
+.cookie-banner.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.cookie-banner p {
+    color: rgba(245,247,250,0.85);
+    font-size: 14px;
+    line-height: 1.55;
+    max-width: 620px;
+    margin: 0;
+}
+
+.cookie-banner a {
+    color: var(--orange-soft);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+.cookie-actions {
+    display: flex;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.cookie-actions button {
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 10px 20px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: .3s var(--ease);
+}
+
+.cookie-btn-reject {
+    background: transparent;
+    color: rgba(245,247,250,0.85);
+    border: 1px solid rgba(245,247,250,0.25);
+}
+
+.cookie-btn-reject:hover {
+    border-color: rgba(245,247,250,0.5);
+}
+
+.cookie-btn-accept {
+    background: var(--orange);
+    color: #fff;
+    border: 1px solid var(--orange);
+}
+
+.cookie-btn-accept:hover {
+    background: var(--orange-soft);
+    border-color: var(--orange-soft);
+}
+
+@media (max-width: 640px) {
+    .cookie-banner {
+        left: 12px;
+        right: 12px;
+        bottom: 12px;
+        padding: 16px;
+    }
+    .cookie-actions {
+        width: 100%;
+    }
+    .cookie-actions button {
+        flex: 1;
+    }
+}
+
+/* ==========================================================================
+   BLOQUEIO DE VÍDEOS INCORPORADOS (Vimeo) ATÉ CONSENTIMENTO
+   O iframe só recebe "src" via JS (ver JS/cookie-banner.js), depois que o
+   usuário aceita o banner de cookies ou clica manualmente em "Carregar vídeo".
+   ========================================================================== */
+.vimeo-gate {
+    position: relative;
+    background: linear-gradient(160deg, #1b2230, #10151f);
+}
+
+.vimeo-gate iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.vimeo-gate-btn {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    background: rgba(15,20,30,0.55);
+    color: #fff;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    pointer-events: auto;
+    transition: background .3s var(--ease);
+}
+
+.vimeo-gate-btn:hover {
+    background: rgba(15,20,30,0.72);
+}
+
+.vimeo-gate-btn svg {
+    width: 30px;
+    height: 30px;
+    fill: #fff;
+    filter: drop-shadow(0 2px 6px rgba(0,0,0,0.4));
+}
+
+.vimeo-gate.vimeo-loaded .vimeo-gate-btn {
+    display: none;
+}

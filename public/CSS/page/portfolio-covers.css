@@ -1,0 +1,162 @@
+/* ==========================================================================
+   15. CARDS DE COBERTURA (páginas internas de portfólio)
+   ========================================================================== */
+body .grad-intro {
+    padding: 56px 0 120px;
+    overflow: hidden;
+    background: radial-gradient(circle at 8% 40%,rgba(245,124,50,.10),transparent 28%),radial-gradient(circle at 92% 60%,rgba(169,201,220,.25),transparent 32%),var(--off-white); 
+}
+
+body .grad-intro-card {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    padding: clamp(30px,4vw,52px);
+    border: 1px solid rgba(92,134,163,.20);
+    border-radius: var(--radius);
+    background: linear-gradient(140deg,rgba(255,255,255,.92),rgba(255,255,255,.68));
+    box-shadow: 0 22px 55px rgba(32,41,58,.10),inset 0 1px rgba(255,255,255,.75);
+    transition: transform .55s var(--ease),box-shadow .55s var(--ease),border-color .4s var(--ease);
+    will-change: transform;
+}
+
+body .grad-intro-card::before,body .grad-intro-card::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+body .grad-intro-card::before {
+    width: 280px;
+    height: 280px;
+    top: -160px;
+    right: -105px;
+    background: radial-gradient(circle,rgba(245,124,50,.22),transparent 68%);
+    animation: introGlowPulse 7s ease-in-out infinite;
+}
+
+body .grad-intro-card::after {
+    width: 200px;
+    height: 200px;
+    bottom: -130px;
+    left: -80px;
+    background: radial-gradient(circle,rgba(92,134,163,.22),transparent 70%);
+}
+
+body .grad-intro-card:hover {
+    border-color: rgba(245,124,50,.40);
+    box-shadow: 0 30px 70px rgba(32,41,58,.15),0 0 0 7px rgba(245,124,50,.035);
+}
+
+body .grad-intro-card-content {
+    position: relative;
+    z-index: 1;
+}
+
+body .grad-intro-signature {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    margin-top: 28px;
+    color: var(--blue-deep);
+    font-family: 'Poppins',sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+}
+
+body .grad-intro-signature i {
+    width: 28px;
+    height: 1px;
+    background: var(--orange);
+}
+
+body .grad-intro-orbit {
+    position: absolute;
+    z-index: 0;
+    border: 1px solid currentColor;
+    border-radius: 50%;
+    opacity: .55;
+    pointer-events: none;
+}
+
+body .orbit-orange {
+    width: 62px;
+    height: 62px;
+    top: 22px;
+    right: 28px;
+    color: var(--orange);
+    animation: introOrbit 8s linear infinite;
+}
+
+body .orbit-blue {
+    width: 34px;
+    height: 34px;
+    bottom: 30px;
+    right: 18%;
+    color: var(--blue-deep);
+    animation: introOrbit 6s linear infinite reverse;
+}
+
+body .grad-intro-media {
+    overflow: visible;
+    isolation: isolate;
+    transition: transform .55s var(--ease),box-shadow .55s var(--ease);
+    will-change: transform;
+}
+
+body .grad-intro-media-glow {
+    position: absolute;
+    z-index: -1;
+    width: 65%;
+    aspect-ratio: 1;
+    right: -20%;
+    bottom: -17%;
+    border-radius: 50%;
+    background: radial-gradient(circle,rgba(245,124,50,.42),transparent 68%);
+    filter: blur(12px);
+    animation: introGlowPulse 6s ease-in-out infinite reverse;
+}
+
+body .grad-intro-media:hover {
+    box-shadow: 0 30px 70px rgba(32,41,58,.20);
+}
+
+body .grad-intro-media img {
+    border-radius: inherit;
+    clip-path: inset(0 round var(--radius));
+    transition: transform .8s var(--ease),filter .5s var(--ease);
+}
+
+body .grad-intro-media:hover img {
+    transform: scale(1.045);
+    filter: saturate(1.06) contrast(1.02);
+}
+
+@keyframes introGlowPulse {
+    0%,100% {
+        transform: scale(1);
+        opacity: .65;
+    } 50% {
+        transform: scale(1.16);
+        opacity: 1;
+    }
+}
+@keyframes introOrbit {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@media (prefers-reduced-motion:reduce) {
+    body .grad-intro-card,body .grad-intro-media {
+        transform: none !important;
+        transition: none;
+    }
+    body .grad-intro-card::before,body .grad-intro-media-glow,body .grad-intro-orbit {
+        animation: none;
+    }
+}

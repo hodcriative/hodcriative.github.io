@@ -1,0 +1,120 @@
+/* ==========================================================================
+   14. FOOTER
+   ========================================================================== */
+footer {
+    background:
+        radial-gradient(circle at 100% 10%,rgba(52, 158, 230, 0.671) 0%,rgba(50, 167, 245, 0.12) 18%,transparent 42%),
+        linear-gradient(120deg, #5C86A3 0%, #476D89 38%, #36576F 72%, #2C4357 100%);
+    color: #fff;
+    padding: 80px 0 30px;
+    position: relative;
+    transition: background-color .5s var(--ease);
+}
+
+footer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg,#5C86A3,#A9C9DC,#F57C32,#FBAE79);
+    background-size: 200% auto;
+    animation: shineText 8s linear infinite;
+}
+
+.footer-top {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: 40px;
+    padding-bottom: 56px;
+    border-bottom: 1px solid rgba(255,255,255,0.28);
+}
+
+.footer-brand .logo {
+    color: #fff;
+    display: flex;
+    max-width: 100%;
+}
+
+.footer-brand .logo img {
+    width: clamp(104px, 13vw, 148px);
+    max-width: 100%;
+    height: auto;
+}
+
+.footer-brand .logo .o {
+    color: var(--blue);
+}
+
+.footer-brand p {
+    color:rgba(255,255,255,0.88);
+    font-size: 14px;
+    margin-top: 16px;
+    max-width: 280px;
+    line-height: 1.6;
+}
+
+.footer-col h5 {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: rgba(255,255,255,0.78);
+    margin-bottom: 18px;
+}
+
+.footer-col ul li {
+    margin-bottom: 12px;
+}
+
+.footer-col ul li a {
+    font-size: 14.5px;
+    color: rgba(255,255,255,0.96);
+    transition: color .3s;
+}
+
+.footer-col ul li a:hover {
+    color: var(--orange);
+}
+
+.social-row {
+    display: flex;
+    gap: 12px;
+    margin-top: 4px;
+}
+
+.social-row a {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.16);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform .3s, background .3s;
+}
+
+.social-row a:hover {
+    background: var(--orange);
+    transform: translateY(-3px) rotate(-6deg);
+}
+
+.social-row a svg {
+    width: 16px;
+    height: 16px;
+    stroke: #fff;
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 26px;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.footer-bottom p {
+    font-size: 13px;
+    color: rgba(255,255,255,0.78);
+}

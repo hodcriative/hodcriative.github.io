@@ -1,0 +1,115 @@
+/* ==========================================================================
+   3. BOTÕES
+   ========================================================================== */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 13px 26px;
+    border-radius: 100px;
+    font-weight: 600;
+    font-size: 14.5px;
+    transition: transform .25s var(--ease), box-shadow .35s var(--ease),
+        background .35s var(--ease), border-color .35s var(--ease), color .35s var(--ease);
+    white-space: nowrap;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Onda de brilho ao passar o mouse (shine sweep) */
+.btn::after {
+    content:"";
+    position: absolute;
+    top: 0;
+    left: -60%;
+    width: 40%;
+    height: 100%;
+    background: linear-gradient(115deg, transparent, rgba(255,255,255,0.45), transparent);
+    transform: skewX(-18deg);
+    transition: left .65s var(--ease);
+    pointer-events: none;
+}
+
+.btn:hover::after {
+    left: 130%;
+}
+
+.btn-magnetic {
+    transition: transform .25s var(--ease), box-shadow .35s var(--ease);
+}
+
+.btn-primary {
+    background: var(--orange);
+    color: #fff;
+    box-shadow: 0 10px 24px rgba(245,124,50,0.28);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow:0 16px 32px rgba(245,124,50,0.36);
+}
+
+.btn-outline {
+    background: transparent;
+    border: 1.5px solid var(--line);
+    color: var(--ink);
+}
+
+.btn-outline:hover {
+    border-color: var(--orange);
+    color: var(--orange);
+    transform: translateY(-2px);
+}
+
+/* O botão outline só é usado dentro do Hero (agora escuro): precisa de contraste claro */
+.hero .btn-outline {
+    border-color:rgba(255,255,255,0.35);
+    color:#fff;
+}
+
+.hero .btn-outline:hover {
+    border-color: var(--orange-soft);
+    color: var(--orange-soft);
+}
+
+.btn-ghost-light {
+    background:rgba(255,255,255,0.18);
+    border: 1.5px solid rgba(255,255,255,0.5);
+    color:#fff;
+    backdrop-filter: blur(6px);
+}
+
+.btn-ghost-light:hover {
+    background: rgba(255,255,255,0.3);
+    transform: translateY(-2px);
+}
+
+/* Anel pulsante usado no botão de CTA principal ("Solicitar orçamento") */
+.btn-pulse {
+    position:relative;
+}
+
+.btn-pulse::before {
+    content: "";
+    position: absolute;
+    inset: -4px;
+    border-radius: 100px;
+    border:2px solid var(--orange);
+    opacity:0;
+    animation:btnPulseRing 2.6s ease-out infinite;
+    pointer-events:none;
+}
+
+@keyframes btnPulseRing {
+    0%{opacity:.55;transform:scale(1);}
+    100%{opacity:0;transform:scale(1.18);}
+}
+
+@media (prefers-reduced-motion: reduce)
+
+{
+    .btn-pulse::before {
+        animation: none;
+    }
+}

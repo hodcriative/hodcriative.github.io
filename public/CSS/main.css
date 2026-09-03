@@ -1,0 +1,39 @@
+/* ==========================================================================
+   HOD CREATIVE — style.css
+   Índice:
+     1.  Variáveis / Reset / Base
+     2.  Utilitários (wrap, eyebrow, reveal, grain, scroll progress)
+     3.  Botões
+     4.  Header / Navbar
+     5.  Theme toggle (claro/escuro) + Menu mobile
+     6.  Hero
+     7.  Sobre (About)
+     8.  Serviços (Services)
+     9.  Projetos (Projects)
+     10. Diferenciais (Diff)
+     11. CTA
+     12. Contato (Contact)
+     13. FAQ
+     14. Footer
+     15. Cards de cobertura (páginas internas de portfólio)
+     16. Responsivo
+     17. Tema escuro
+   ========================================================================== */
+
+@import url('base/variables.css');
+@import url('base/utilities.css');
+@import url('components/buttons.css');
+@import url('components/header.css');
+@import url('sections/hero.css');
+@import url('sections/about.css');
+@import url('sections/services.css');
+@import url('sections/projects.css');
+@import url('sections/diff.css');
+@import url('sections/cta.css');
+@import url('sections/contact.css');
+@import url('components/faq.css');
+@import url('components/cookie-banner.css');
+@import url('sections/footer.css');
+@import url('page/portfolio-covers.css');
+@import url('responsive.css');
+@import url('theme-dark.css');

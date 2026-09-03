@@ -1,0 +1,3 @@
+/* React shell: the original visual system remains in public/CSS unchanged. */
+html { scroll-behavior: smooth; }
+.hod-page { min-height: 100vh; }

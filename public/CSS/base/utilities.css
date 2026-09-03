@@ -1,0 +1,135 @@
+/* ==========================================================================
+   2. UTILITÁRIOS
+   ========================================================================== */
+.wrap{max-width:1240px;margin:0 auto;padding:0 32px;}
+
+.eyebrow{
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--blue-deep);
+    margin-bottom: 18px;
+}
+
+.eyebrow .dot {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: conic-gradient(var(--blue) 0deg 180deg, var(--orange) 180deg 360deg);
+    flex-shrink: 0;
+}
+
+.eyebrow-icon {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    object-fit: contain;
+    display: block;
+}
+
+/* ---------- TEXTURA DE GRAIN GLOBAL ----------
+   Uma camada sutil de "grão de filme" sobre toda a página, reforçando a
+   linguagem cinematográfica da marca sem comprometer a leitura do conteúdo. */
+.grain-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    pointer-events: none;
+    opacity: 0.05;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+    background-size: 180px 180px;
+    animation: grainShift 1s steps(6) infinite;
+}
+
+@keyframes grainShift {
+    0%   { transform:translate(0,0); }
+    20%  { transform:translate(-3%,-5%); }
+    40%  { transform:translate(-6%,3%); }
+    60%  { transform:translate(4%,-3%); }
+    80%  { transform:translate(3%,5%); }
+    100% { transform:translate(0,0); }
+}
+
+@media (prefers-reduced-motion: reduce){
+    .grain-overlay { 
+        animation: none; 
+        opacity:0.035; 
+    }
+}
+
+/* Barra de progresso de rolagem, fixa no topo da página */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    width: 0%;
+    z-index: 1300;
+    background: linear-gradient(90deg,var(--orange),var(--blue-deep));
+    transition: width .1s linear;
+    pointer-events: none;
+}
+
+/* ---------- REVEAL (animação de entrada ao rolar) ---------- */
+.reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity .9s var(--ease), transform .9s var(--ease);
+}
+
+.reveal.in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Variação de entrada para cards de grade (leve escala + deslocamento) */
+.about-card.reveal,.service-card.reveal,.diff-card.reveal {
+    transform:translateY(24px) scale(.97);
+}
+
+.about-card.reveal.in,.service-card.reveal.in,.diff-card.reveal.in {
+    transform:translateY(0) scale(1);
+}
+
+/* ---------- SECTION HEAD (título + descrição padrão de cada seção) ---------- */
+.section-head {
+    max-width: 640px;
+    margin-bottom: 56px;
+}
+
+.section-head h2 {
+    font-size: clamp(30px,3.6vw,42px);
+    font-weight: 700;
+    margin-bottom: 14px;
+}
+
+.section-head p.sub {
+    font-size: 16px;
+    color: var(--ink-soft);
+}
+
+.section-head.center {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+/* Glow genérico usado em vários fundos de seção (About, Projects, Contact) */
+@keyframes glowDrift {
+    0%   { transform: translate(0,0) scale(1); }
+    100% { transform: translate(24px,-18px) scale(1.08); }
+}
+
+/* Gerenciador de performance: a classe é aplicada pelo IntersectionObserver
+   central quando uma seção sai da viewport. Pausa keyframes sem resetar estado. */
+.section-animations-paused,
+.section-animations-paused *,
+.section-animations-paused *::before,
+.section-animations-paused *::after {
+    animation-play-state: paused !important;
+}

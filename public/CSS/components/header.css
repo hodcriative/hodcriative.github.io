@@ -1,0 +1,228 @@
+/* ==========================================================================
+   4. HEADER / NAVBAR
+   ========================================================================== */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding: 22px 0;
+    transition: .5s var(--ease);
+}
+
+header .wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header.scrolled {
+    background: rgba(255,255,255,0.78);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: var(--shadow-sm);
+    padding: 14px 0;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.logo img {
+    max-height: 45px;
+    width: auto;
+    transition: transform .35s var(--ease);
+}
+
+.logo:hover img {
+    transform: scale(1.05) rotate(-2deg);
+}
+
+nav.menu {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+nav.menu ul {
+    display: flex;
+    gap: 36px;
+}
+
+/* Por padrão o cabeçalho flutua sobre o Hero escuro, então o texto começa claro.
+   Ao rolar, o fundo do header vira um vidro branco e o texto escurece. */
+nav.menu a.nav-link {
+    font-size: 14.5px;
+    font-weight: 500;
+    color:#fff;
+    position: relative;
+    padding: 4px 0;
+    transition: color .3s;
+}
+
+header.scrolled nav.menu a.nav-link {
+    color: var(--ink);
+}
+
+nav.menu a.nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 0;
+    height: 2px;
+    background: var(--orange);
+    transition: width .3s var(--ease);
+}
+
+nav.menu a.nav-link:hover {
+    color: var(--orange);
+}
+
+nav.menu a.nav-link:hover::after {
+    width: 100%;
+}
+
+.burger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    width: 26px;
+}
+
+.burger span {
+    height: 2px;
+    background:#fff;
+    border-radius: 2px;
+    transition: .3s;
+}
+
+header.scrolled .burger span {
+    background:var(--ink);
+}
+
+
+/* ==========================================================================
+   5. THEME TOGGLE + MENU MOBILE
+   ========================================================================== */
+.theme-toggle {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    background:rgba(255,255,255,0.1);
+    border: 1.5px solid rgba(255,255,255,0.28);
+    color:#fff;
+    position: relative;
+    transition: background .35s var(--ease), border-color .35s var(--ease), transform .3s var(--ease);
+}
+header.scrolled .theme-toggle{
+    background:rgba(32,41,58,0.06);
+    border-color: var(--line);
+    color: var(--ink);
+}
+
+.theme-toggle:hover {
+    transform: translateY(-2px) rotate(-8deg);
+    border-color: var(--orange);
+    color: var(--orange);
+}
+
+.theme-toggle svg {
+    width: 19px;
+    height: 19px;
+    position: absolute;
+    transition: opacity .35s var(--ease), transform .5s var(--ease);
+}
+
+.theme-toggle .icon-sun {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+}
+
+.theme-toggle .icon-moon {
+    opacity: 0;
+    transform: rotate(-60deg) scale(.4);
+}
+
+html[data-theme="dark"] .theme-toggle .icon-sun {
+    opacity: 0;
+    transform: rotate(60deg) scale(.4);
+}
+
+html[data-theme="dark"] .theme-toggle .icon-moon {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+}
+
+.theme-toggle-mobile {
+    width: auto;
+    height: auto;
+    border-radius: 100px;
+    padding: 10px 22px;
+    gap: 10px;
+    background: var(--off-white);
+    border: 1.5px solid var(--line);color:var(--ink);
+    flex-direction: row;
+}
+.theme-toggle-mobile svg {
+    position: static;
+    width: 18px;
+    height: 18px;
+}
+
+.theme-toggle-mobile .icon-sun, .theme-toggle-mobile .icon-moon {
+    display:none;
+}
+
+html[data-theme="light"] .theme-toggle-mobile .icon-sun {
+    display: block;
+}
+
+html[data-theme="dark"] .theme-toggle-mobile .icon-moon {
+    display: block;
+}
+
+.theme-toggle-mobile span {
+    font-family: 'Inter';
+    font-size: 15px;
+    font-weight: 600;
+}
+
+/* Painel de menu mobile (abre em tela cheia) */
+.mobile-panel {
+    position: fixed;
+    inset: 0;
+    background: var(--white);
+    z-index: 1200;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 28px;
+    transform: translateX(-100%);
+    transition: transform .5s var(--ease), background-color .5s var(--ease);
+}
+.mobile-panel.open {
+    transform: translateX(0);
+}
+
+.mobile-panel a {
+    font-family: 'Poppins';
+    font-size: 26px;
+    font-weight: 600;
+}
+
+.mobile-panel .close-btn {
+    position: absolute;
+    top: 26px;
+    right: 28px;
+    font-size: 30px;
+    color: var(--ink);
+}
