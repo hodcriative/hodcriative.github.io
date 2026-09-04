@@ -22,7 +22,7 @@
     (function () {
       var saved = localStorage.getItem('hod-theme');
       var theme = saved || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-      document.documentElement.setAttribute('data-theme', themes);
+      document.documentElement.setAttribute('data-theme', theme);
     })();
   </script>
   <script type="module" src="/src/main.jsx"></script>
